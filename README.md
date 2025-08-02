@@ -21,11 +21,17 @@
 
 ## Screenshots
 
-![Login Page](https://github.com/Krish-Depani/Decentralized-Voting-System-Using-Ethereum-Blockchain/blob/main/public/login%20ss.png)
+### 🏠 Home Page
+![Home Page](./screenshots/home.png)
 
-![Admin Page](https://github.com/Krish-Depani/Decentralized-Voting-System-Using-Ethereum-Blockchain/blob/main/public/admin%20ss.png)
+### 🔐 Login Page
+![Login Page](./screenshots/login.png)
 
-![Voter Page](https://github.com/Krish-Depani/Decentralized-Voting-System-Using-Ethereum-Blockchain/blob/main/public/index%20ss.png)
+### 🗳 Voting Page
+![Voting Page](./screenshots/vote.png)
+
+### 🛠 Admin Dashboard
+![Admin Page](./screenshots/admin.png)
 
 ## Installation
 
@@ -159,3 +165,4 @@ The code in this repository is licensed under the MIT License. This means that y
 
 ## If you like this project, please give it a 🌟.
 ## Thank you 😊.
+
