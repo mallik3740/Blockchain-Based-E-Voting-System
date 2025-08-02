@@ -22,16 +22,16 @@
 ## Screenshots
 
 ### 🏠 Home Page
-![Home Page](./screenshots/home.png)
+[Home Page](./screenshots/home.png)
 
 ### 🔐 Login Page
-![Login Page](./screenshots/login.png)
+[Login Page](./screenshots/login.png)
 
 ### 🗳 Voting Page
-![Voting Page](./screenshots/vote.png)
+[Voting Page](./screenshots/vote.png)
 
 ### 🛠 Admin Dashboard
-![Admin Page](./screenshots/admin.png)
+[Admin Page](./screenshots/admin.png)
 
 ## Installation
 
@@ -165,4 +165,5 @@ The code in this repository is licensed under the MIT License. This means that y
 
 ## If you like this project, please give it a 🌟.
 ## Thank you 😊.
+
 
