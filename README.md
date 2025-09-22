@@ -22,19 +22,18 @@
 ## Screenshots
 
 ### 🏠 Home Page
-[Home Page]
 <img width="1819" height="970" alt="image" src="https://github.com/user-attachments/assets/c3ec9f45-c986-4a52-a69c-e22a2cc07c9e" />
 
 ### 🔐 Login Page
-[Login Page]
 <img width="1717" height="951" alt="image" src="https://github.com/user-attachments/assets/f6edba39-e316-4a94-bbb0-4a647ce75a5e" />
 
 
 ### 🗳 Voting Page
-[Voting Page]
+<img width="1891" height="962" alt="image" src="https://github.com/user-attachments/assets/bb222797-94f0-4432-9bb0-592b24fd65b7" />
+
 
 ### 🛠 Admin Dashboard
-[Admin Page]<img width="1867" height="814" alt="image" src="https://github.com/user-attachments/assets/d176b491-9406-4206-b57d-22fa5134eb5f" />
+<img width="1867" height="814" alt="image" src="https://github.com/user-attachments/assets/d176b491-9406-4206-b57d-22fa5134eb5f" />
 <img width="1827" height="874" alt="image" src="https://github.com/user-attachments/assets/bb28f102-3fb6-427b-b4b9-ae03b4815139" />
 <img width="1707" height="281" alt="image" src="https://github.com/user-attachments/assets/4b44e10c-3d99-4f41-a4f3-175d0a871729" />
 
@@ -168,10 +167,11 @@ For more info about usage checkout [YouTube video](https://www.youtube.com/watch
 
 ## License
 
-The code in this repository is licensed under the MIT License. This means that you are free to use, modify, and distribute the code, as long as you include the original copyright and license notice. For more information about LICENSE please click [here](https://github.com/Krish-Depani/Decentralized-Voting-System-Using-Ethereum-Blockchain/blob/main/LICENSE).
+The code in this repository is licensed under the MIT License. This means that you are free to use, modify, and distribute the code, as long as you include the original copyright and license notice. For more information about LICENSE please click [here](https://github.com/mallik3740)
 
 ## If you like this project, please give it a 🌟.
 ## Thank you 😊.
+
 
 
 
