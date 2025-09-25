@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Right2Vote</title>
+  <link rel="stylesheet" href="../csss/admin.css" />
+  <style>
+    /* Reset & Typography */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #f4f7fa;
+      color: #333;
+      line-height: 1.6;
+      z-index: 1;
+      margin-top: 60px;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000; /* ensures it stays above other content */
+      background-color: #002f5f;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .logout-btn {
+      background-color: #0056b3;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .logout-btn:hover {
+      background-color: #007bff;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(to right, #e3f2fd, #f4f7fa);
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+
+    .hero h1 {
+      font-size: 2.7rem;
+      color: #002f5f;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    /* Section Container */
+    .container {
+      max-width: 960px;
+      margin: 30px auto;
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #002f5f;
+      margin-bottom: 15px;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    table {
+      width: 100%;
+      border-spacing: 0 12px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px;
+    }
+
+    input[type="text"], input[type="date"] {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #0047b3;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      background-color: #004080;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0066cc;
+    }
+
+    .btn-danger {
+      background-color: #c0392b;
+    }
+
+    .btn-danger:hover {
+      background-color: #a93226;
+    }
+
+    #clearMsg {
+      text-align: center;
+      color: #d63031;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      table, tr, td, th {
+        display: block;
+        width: 100%;
+      }
+
+      input, .btn {
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Right2Vote</div>
+    <a class="logout-btn" href="/">Logout</a>
+  </header>
+
+  <section class="hero">
+    <h1>Admin Control Panel</h1>
+    <p>Efficiently manage elections, candidates, and voting timelines.</p>
+  </section>
+
+  <section class="container">
+    <div class="section-title">Add New Candidate</div>
+    <div class="section-desc">Provide the candidate's name and affiliated party below.</div>
+    <table>
+      <tr>
+        <th>Name</th>
+        <td><input id="name" type="text" placeholder="Enter full name" /></td>
+        <th>Party</th>
+        <td><input id="party" type="text" placeholder="Enter party name" /></td>
+      </tr>
+    </table>
+    <button id="addCandidate" class="btn">Add Candidate</button>
+  </section>
+
+  <section class="container">
+    <div class="section-title">Set Voting Schedule</div>
+    <div class="section-desc">Choose the start and end dates for the election.</div>
+    <table>
+      <tr>
+        <th>Start Date</th>
+        <td><input id="startDate" type="date" /></td>
+        <th>End Date</th>
+        <td><input id="endDate" type="date" /></td>
+      </tr>
+    </table>
+    <button id="addDate" class="btn">Save Dates</button>
+  </section>
+
+  <section class="container">
+    <div class="section-title">Clear Candidate List</div>
+    <div class="section-desc">Use this option to reset all registered candidates.</div>
+    <button id="clearCandidates" class="btn btn-danger">Clear Candidates</button>
+    <p id="clearMsg"></p>
+  </section>
+
+  <section class="container">
+    <div class="section-title">Registered Candidates</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Party</th>
+          <th>Total Votes</th>
+        </tr>
+      </thead>
+      <tbody id="showCandidates">
+        <!-- Candidates will be listed here -->
+      </tbody>
+    </table>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../dist/app.bundle.js" type="module"></script>
+
+</body>
+</html>

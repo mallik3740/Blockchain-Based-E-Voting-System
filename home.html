@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <title>Right2Vote - Empowering Your Vote</title>
+  <style>
+    /* [Reset & Base Styles] */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f7fb;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; height: auto; }
+
+    /* Header */
+    header {
+      background: #004a80;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 30px;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover {
+      background-color: #fff;
+      color: #004a80;
+    }
+
+    /* Hero Section with Slider */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .slider {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slide.active {
+      opacity: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0 20px;
+    }
+    .hero-content h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+    .hero-content p {
+      font-size: 20px;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+    .login-btn {
+      background-color: #7b5df2;
+      color: white;
+      padding: 12px 25px;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    /* Info Section */
+    section.info-section {
+      padding: 60px 15px;
+      max-width: 1100px;
+      margin: 0 auto 60px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .content-wrapper {
+      display: flex;
+      gap: 60px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .text-content {
+      flex: 1 1 320px;
+      max-width: 480px;
+    }
+    .text-content h2 {
+      color: #004a80;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .text-content p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .info-section img {
+      flex: 1 1 280px;
+      max-width: 320px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 74, 128, 0.2);
+    }
+    ul {
+      list-style: disc inside;
+      margin-top: 10px;
+      color: #333;
+    }
+
+    /* Industries Slider Section */
+    #industries {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: #fff;
+    }
+    .industries-header h2 {
+      font-size: 36px;
+      font-weight: bold;
+      color: #1e1e2f;
+      margin-bottom: 10px;
+    }
+    .industries-header h3 {
+    font-size: 2.2rem; /* or 36px, or whatever size you prefer */
+    font-weight: bold;
+    color:#004a80;
+    margin-bottom: 10px;
+}
+
+    .industries-header p {
+      max-width: 850px;
+      margin: 0 auto 40px;
+      color: #6c6c80;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+    .slider-container {
+      overflow: hidden;
+      position: relative;
+    }
+    .industries-grid {
+      display: flex;
+      gap: 25px;
+      animation: scroll 25s linear infinite;
+      padding: 10px 0;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    .industry-box {
+      min-width: 260px;
+      background-color: #f8f8ff;
+      border: 1px solid #ddd;
+      padding: 25px 20px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      color: #1e1e2f;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+      cursor: pointer;
+    }
+    .industry-box:hover {
+      border-color: #7b5df2;
+      transform: translateY(-5px);
+      background-color: #f3f0ff;
+    }
+    .industry-box .icon {
+      font-size: 28px;
+      margin-right: 15px;
+      color: #7b5df2;
+    }
+    .industry-box span {
+      flex-grow: 1;
+      text-align: left;
+      font-size: 16px;
+    }
+    .industry-box .arrow {
+      font-size: 22px;
+      color: orange;
+      margin-left: 15px;
+    }
+
+    /* Contact Section */
+    #contact-us {
+      background: #eef4fb;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    #contact-us h2 {
+      font-size: 2rem;
+      color: #004a80;
+      margin-bottom: 20px;
+    }
+    #contact-us p {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 30px;
+    }
+    .contact-links a {
+      display: block;
+      margin-bottom: 10px;
+      color: #004a80;
+      font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+      background: #00305c;
+      color: #eee;
+      padding: 25px 15px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .info-section .content-wrapper {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-content h1 { font-size: 1.8rem; }
+      .hero-content p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Right2Vote</div>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#should-i-vote">Why To Vote</a>
+      <a href="/login">Login</a>
+      <a href="#contact-us">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="slider">
+      <img src="https://i.pinimg.com/736x/48/0a/fb/480afb4686f3537a185cac8bc8dc38e8.jpg" class="slide active" alt="Voting 1" height="100%" width="60%">
+      <img src="https://i.pinimg.com/736x/d7/e0/92/d7e0923b4fb52d9dce5db5f757034c32.jpg" class="slide active" alt="Voting 1" height="100%" width="60%">
+      <img src="https://i.pinimg.com/736x/f0/5e/34/f05e34be48c208a509f73f6dea82761f.jpg" class="slide" alt="Voting 2"height="100%" width="60%">
+      <img src="https://i.pinimg.com/736x/b9/99/35/b99935be908536da49a557b7a8ebc1b0.jpg" class="slide" alt="Voting 3"height="100%" width="60%">
+    </div>
+    <div class="hero-content">
+      <h1>Empowering Every Voice, One Vote at a Time</h1>
+      <p>Right2Vote is your platform to freely and securely exercise your right to vote. Join the movement to make voting accessible and transparent for all citizens.</p>
+      <a href="/login" class="login-btn">Login to Vote</a>
+    </div>
+  </section>
+
+  <!-- About / Info Section -->
+  <section class="info-section" id="about">
+    <div class="content-wrapper">
+      <div class="text-content">
+        <h2>Why Right2Vote?</h2>
+        <p>Right2Vote aims to bring secure, decentralized, and transparent voting to every citizen’s fingertips. No more long lines, no more missing out — just you, your vote, and the blockchain.</p>
+        <ul>
+          <li>Secure blockchain-based platform</li>
+          <li>Real-time vote tallying</li>
+          <li>User-friendly interface</li>
+          <li>Instant verification</li>
+        </ul>
+      </div>
+      <img src="https://i.pinimg.com/736x/48/0a/fb/480afb4686f3537a185cac8bc8dc38e8.jpg" alt="Voting Illustration">
+    </div>
+
+  </section>
+    <section class="info-section" id="should-i-vote">
+    <div class="content-wrapper">
+      <div class="text-content">
+        <h2>Why Should I Vote?</h2>
+        <p>Voting is the cornerstone of any democracy. It gives citizens the power to choose leaders who represent their values, address community needs, and shape the future of the nation...</p>
+        <p>Right2Vote ensures this process is not only secure but also transparent and accessible...</p>
+        <p>Most importantly, voting gives you a voice...</p>
+      </div>
+      <img src="https://i.pinimg.com/736x/39/e5/f6/39e5f624f952aff1e96ade34665c0705.jpg" alt="Empowered citizen voting" />
+    </div>
+  </section>
+
+  <!-- Why Vote Section (Industries) -->
+  <section id="industries" class="info-section">
+    <div class="industries-header" id="should-i-vote">
+      <h3>Industries We Serve</h3>
+<p>Our decentralized voting system can be used in various sectors like educational institutions, corporate organizations, public elections, and community voting platforms—ensuring secure and trustworthy results everywhere.</p>
+    </div>
+    <div class="slider-container">
+      <div class="industries-grid">
+        <div class="industry-box"><span>Secure Platform</span><span class="arrow">→</span></div>
+        <div class="industry-box"><span>Instant Results</span><span class="arrow">→</span></div>
+        <div class="industry-box"><span>Easy Access</span><span class="arrow">→</span></div>
+        <div class="industry-box"><span>24/7 Availability</span><span class="arrow">→</span></div>
+        <div class="industry-box"><span>Transparent Process</span><span class="arrow">→</span></div>
+        <div class="industry-box"><span>Voter Anonymity</span><span class="arrow">→</span></div>
+        
+      </div>
+    </div>
+  </section>
+  <section class="info-section" id="features">
+    <div class="content-wrapper">
+      <div class="text-content">
+        <h2>Platform Features</h2>
+        <p>Right2Vote offers a modern, transparent, and secure way for citizens to vote from any location.</p>
+        <ul>
+          <li>🛡️ Blockchain-based security</li>
+          <li>📱 Mobile-friendly interface</li>
+          <li>🔒 Identity verification</li>
+          <li>🕓 Real-time results tracking</li>
+          <li>💬 Voter support system</li>
+        </ul>
+      </div>
+      <img src="https://images.pexels.com/photos/6476585/pexels-photo-6476585.jpeg" alt="Feature highlights" />
+    </div>
+  </section>
+
+  <section class="info-section" id="why-us">
+    <div class="content-wrapper">
+      <img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg" alt="Secure voting process" />
+      <div class="text-content">
+        <h2>Why Choose Right2Vote?</h2>
+        <p>We aim to simplify and secure the voting process by offering:</p>
+        <ul>
+          <li>✅ Easy access for remote voters</li>
+          <li>✅ Tamper-proof digital voting</li>
+          <li>✅ Reduced logistical challenges</li>
+          <li>✅ Increased youth participation</li>
+          <li>✅ Transparent election records</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact-us">
+    <h2>Contact Us</h2>
+    <p>Have questions or suggestions? Reach out to us anytime.</p>
+    <div class="contact-links">
+      <a href="mailto:support@right2vote.com">mallikarjunagowda450@gmail.com</a>
+      <a href="tel:+919535531011">+91-9535531011</a>
+      <a href="mailto:support@right2vote.com">sujaygowdas2003@gmail.com</a>
+      <a href="tel:+919535531011">+91-7619463388</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Right2Vote. All rights reserved.
+</footer>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let index = 0;
+
+  setInterval(() => {
+    slides[index].classList.remove('active');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('active');
+  }, 4000);
+</script>
+
+
+</body>
+</html>

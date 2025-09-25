@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Right2Vote | Voter Panel</title>
+  <style>
+    :root {
+  --primary-color: #05307a;
+  --secondary-color: #007bff;
+  --background-light: #f3f6fb;
+  --text-dark: #222;
+  --text-light: #cfd8dc;
+  --border-radius: 12px;
+  --box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --highlight-color: #ffcc00;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  animation: slideShow 30s infinite ease-in-out;
+  background-size: 1500px auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: yellow;
+  line-height: 1.6;
+  font-size: 16px;
+  position: relative;
+}
+
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* Darker for readability */
+  z-index: -1;
+}
+
+/* KEYFRAMES for background slideshow */
+@keyframes slideShow {
+  0%, 20% {
+    background-image: url('https://i.pinimg.com/736x/8b/af/93/8baf93cb4563299d4fba07078d685774.jpg'); /* Voting booth */
+  }
+  25%, 45% {
+    background-image: url('https://i.pinimg.com/736x/e3/3e/4d/e33e4d824e059ec65db05b2d42d86316.jpg'); /* Ballot box */
+  }
+  50%, 70% {
+    background-image: url('https://i.pinimg.com/736x/ed/65/a7/ed65a789285fba6fad2813900e828b8d.jpg'); /* People voting */
+  }
+  75%, 95% {
+    background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f'); /* Social unity */
+  }
+  100% {
+    background-image: url('https://images.unsplash.com/photo-1556742031-c6961e8560b0'); /* Civic engagement */
+  }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(5, 5, 5, 0.8);
+  color: #fff;
+  padding: 20px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  box-shadow: var(--box-shadow);
+}
+
+.logout-btn {
+  background-color: transparent;
+  color: white;
+  border: 2px solid #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  transition: all 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #0055aa;
+  border-color: #0055aa;
+}
+
+.container {
+  max-width: 860px;
+  margin: 40px auto;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.1); /* Transparent white */
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.title-section {
+  margin-bottom: 30px;
+}
+
+.title-section h2 {
+  font-size: 2.4rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.title-section p {
+  font-size: 1.2rem;
+  color: var(--text-light);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: rgba(8, 117, 233, 0.9);
+  color: white;
+}
+
+th, td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+tbody tr td {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+tbody tr td input[type="radio"] {
+  width: 20px;
+  height: 20px;
+}
+
+.vote-section {
+  margin-top: 30px;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.vote-btn {
+  background-color: var(--highlight-color);
+  color: #000;
+  padding: 14px 36px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px var(--highlight-color);
+}
+
+.vote-btn:hover {
+  background-color: #fff000;
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--highlight-color);
+}
+
+.vote-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  color: #666;
+  box-shadow: none;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 1rem;
+  color: #ccc;
+  text-align: center;
+}
+
+.highlight {
+  font-weight: bold;
+  color: var(--highlight-color);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  th, td {
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .vote-btn {
+    width: 100%;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Right2Vote</h1>
+    <button class="logout-btn" onclick="window.location.href='/'">Logout</button>
+  </header>
+
+  <main class="container">
+    <div class="title-section">
+      <h2>Voting Panel</h2>
+      <p>Select your preferred candidate and cast your vote securely.</p>
+      <p><strong>Voting Dates:</strong> <span id="dates">Loading...</span></p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Party</th>
+        </tr>
+      </thead>
+      <tbody id="boxCandidate">
+        <!-- Candidates injected here -->
+      </tbody>
+    </table>
+
+    <div class="vote-section">
+      <p>Please select a candidate and confirm your vote.</p>
+      <br>
+      <button id="voteButton" class="vote-btn" onclick="App.vote()" abled>Vote</button>
+      <div id="msg"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p id="accountAddress"></p>
+  </footer>
+
+  <!-- Script -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="module" src="../dist/app.bundle.js"></script>
+
+</body>
+</html>
